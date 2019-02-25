@@ -10,6 +10,12 @@ scalacOptions in ThisBuild ++= Seq(
   "-Xfatal-warnings",
 )
 
+libraryDependencies in ThisBuild ++= Seq(
+  compilerPlugin("com.github.ghik" %% "silencer-plugin" % "1.3.1"),
+  "com.github.ghik" %% "silencer-lib" % "1.3.1" % Provided
+)
+scalacOptions in ThisBuild += "-P:silencer:globalFilters=javaGenerateEqualsAndHash"
+
 val macwire = "com.softwaremill.macwire" %% "macros" % "2.3.0" % "provided"
 val scalaTest = "org.scalatest" %% "scalatest" % "3.0.4" % Test
 
